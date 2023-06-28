@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<div th:replace ="fragments::head_fragment"></div>
+	<body>
+	<!-- Nav Bar -->
+	
+	<div th:replace ="fragments::menu"></div>
+	
+	<!-- Nav Bar End -->
+		
+	<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-9" style="margin:0 auto;">
+					<h1>Customers</h1>
+					
+						
+						<table  class="table table-striped">
+							<tr>
+								<th>ID</th>
+								<th>Name</th>
+								<th>Email</th>
+								<th>Phone</th>
+								<th>Address</th>
+								<th>Action</th>
+								
+							</tr>
+							<th:block th:each="customer: ${customerlist}">
+								<tr>
+									<td th:text ="${customer.id}"></td>
+									<td th:text ="${customer.name}"></td>
+									<td th:text ="${customer.email}"></td>
+									<td th:text ="${customer.phone}"></td>
+									<td th:text ="${customer.address}"></td>
+									<td><a th:href="@{'/deletecustomer/'+${customer.id}}">Delete</a></td>
+								</tr>
+							</th:block>
+						</table>
+						</div>
+						</div>
+						</div>
+						
+		
+	</body>
+</html>

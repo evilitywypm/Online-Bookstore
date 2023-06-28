@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	
+	<div th:replace ="fragments::head_fragment"></div>
+	<body>
+	<!-- Nav Bar -->
+	
+	<div th:replace ="fragments::menu"></div>
+	
+	<!-- Nav Bar End -->
+	
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-9" style="margin:0 auto;">
+					<h1>List of the Authors</h1>
+						<table  class="table-striped">
+							<tr>
+								<th>AuthorName</th>
+								<th>AuthorEmail</th>
+								<th>Action</th>
+							</tr>
+							<th:block th:each="author: ${authorlist}">
+								<tr>
+									<td th:text ="${author.name}"></td>
+									<td th:text ="${author.email}"></td>
+									<td><a th:href="@{'/editauthor/'+${author.id}}">Edit</a></td>
+									<td><a th:href="@{'/deleteauthor/'+${author.id}}">Delete</a></td>
+								</tr>
+							</th:block>
+						</table>
+				</div>
+			</div>
+		</div>
+		
+	</body>
+</html>

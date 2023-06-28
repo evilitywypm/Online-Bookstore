@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<div th:replace ="fragments::head_fragment"></div>
+	<body>
+	<!-- Nav Bar -->
+	
+	<div th:replace ="fragments::menu"></div>
+	
+	<!-- Nav Bar End -->
+		
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-9" style="margin:0 auto;">
+					<h1>Order Details</h1>
+					
+					<div>
+					<p th:text ="${orders.id}">Order ID</p>
+					<p th:text ="${orders.orderdate}">Order Date</p>
+					<p th:text = "${orders.customer.name}">Customer Name</p>
+					
+					</div>
+						
+						<table  class="table table-striped">
+							<tr>
+								<th>ID</th>
+								<th>Book</th>
+								<th>ISBN</th>
+								<th>Author</th>
+								<th>Category</th>
+								<th>Quantity</th>
+								<th>QuotedPrice</th>
+								<th>Orders</th>
+							
+								
+							</tr>
+							<th:block th:each="orderdetails: ${detailslist}">
+								<tr>
+									<td th:text ="${orderdetails.id}"></td>
+									<td th:text ="${orderdetails.book.title}"></td>
+									<td th:text ="${orderdetails.book.isbn}"></td>
+									<td th:text ="${orderdetails.book.author.name}"></td>
+									<td th:text ="${orderdetails.book.category.name}"></td>
+									
+									<td th:text ="${orderdetails.quantity}"></td>
+									<td th:text ="${orderdetails.quotedprice}"></td>
+									<td th:text ="${orderdetails.orders.id}"></td>
+									
+				
+								</tr>
+							</th:block>
+							
+						</table>
+						<p>Status</p>
+							<p th:text = "${orders.status}"></p>
+							<div>
+								<a th:href="@{'/confirm/'+${orders.id}}" class="btn">Confirm</a>
+							</div>
+				</div>
+			</div>
+		</div>
+		
+	</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<div th:replace ="fragments::head_fragment"></div>
+	<body>
+	<!-- Nav Bar -->
+	
+	<div th:replace ="fragments::menu"></div>
+	
+	<!-- Nav Bar End -->
+		
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-9" style="margin:0 auto;">
+					<h1>List of the Books</h1>
+					
+						
+						<table  class="table table-striped">
+							<tr>
+								<th>Title</th>
+								<th>ISBN</th>
+								<th>Price</th>
+								<th>Author</th>
+								<th>Category</th>
+								<th>Image</th>
+								<th>File</th>
+								<th>Action</th>
+							</tr>
+							<th:block th:each="book: ${booklist}">
+								<tr>
+									<td th:text ="${book.title}"></td>
+									<td th:text ="${book.isbn}"></td>
+									<td th:text ="${book.price}"></td>
+									<td th:text ="${book.author.name}"></td>
+									<td th:text ="${book.category.name}"></td>
+									<td><img th:src="@{${'/uploads/'+book.img}}" width="50px" height="50px"></td>
+									<td><a th:href="@{${'/uploads/'+{book.file}}}"><p th:text ="${book.file}"></p></a></td>
+									<td><a th:href="@{'/editbook/'+${book.id}}">Edit</a></td>
+									<td><a th:href="@{'/deletebook/'+${book.id}}">Delete</a></td>
+									
+								</tr>
+							</th:block>
+						</table>
+						<!-- <nav aria-label="Pagination" th:if="${booklist.totalPages gt 0}">
+              <ul class="pagination justify-content-center font-weight-bold">
+                  <li class="page-item" th:classappend="${booklist.number eq 0} ? 'disabled'">
+                      <a class="page-link"
+                         th:href="@{/viewbook?page={id}(id=${booklist.number lt 2 ? 1 : booklist.number})}"
+                         aria-label="Previous" title="Previous Page" data-toggle="tooltip">
+                          <span aria-hidden="true">&laquo;</span>
+                      </a>
+                  </li>
+                  <li class="page-item" th:classappend="${i eq booklist.number + 1} ? 'active'"
+                      th:each="i : ${#numbers.sequence( 1, booklist.totalPages, 1)}">
+                      <a class="page-link" th:href="@{/viewbook?page={id}(id=${i})}" th:text="${i}"
+                         th:title="${'Page '+ i}" data-toggle="tooltip"></a>
+                  </li>
+                  <li class="page-item" th:classappend="${booklist.number + 1 eq booklist.totalPages} ? 'disabled'">
+                      <a class="page-link"
+                         th:href="@{/viewbook?page={id}(id=${booklist.number + 2})}"
+                         aria-label="Next" title="Next Page" data-toggle="tooltip">
+                          <span aria-hidden="true">&raquo;</span>
+                      </a>
+                  </li>
+              </ul>
+          </nav> -->
+				</div>
+			</div>
+		</div>
+		
+	</body>
+</html>

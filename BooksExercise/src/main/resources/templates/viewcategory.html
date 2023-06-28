@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	
+	<div th:replace ="fragments::head_fragment"></div>
+	<body>
+	<!-- Nav Bar -->
+	
+	<div th:replace ="fragments::menu"></div>
+	
+	<!-- Nav Bar End -->
+		
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-9" style="margin:0 auto;">
+					<h1>Categories</h1>
+						<table  class="table-striped">
+							<tr>
+								<th>Category Name</th>
+								<th>Action Tabs</th>
+							</tr>
+							<th:block th:each="category: ${categorylist}">
+								<tr>
+									<td th:text ="${category.name}"></td>
+									<td><a th:href="@{'/editcategory/'+${category.id}}">Edit</a></td>
+									<td><a th:href="@{'/deletecategory/'+${category.id}}">Delete</a></td>
+									
+									
+								</tr>
+							</th:block>
+						</table>
+				</div>
+			</div>
+		</div>
+		
+	</body>
+</html>

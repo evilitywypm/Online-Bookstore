@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<div th:replace ="fragments::head_fragment"></div>
+	<body>
+	<!-- Nav Bar -->
+	
+	<div th:replace ="fragments::menu"></div>
+	
+	<!-- Nav Bar End -->
+		
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-9" style="margin:0 auto;">
+					<h1>List of the Books</h1>
+					
+						
+						<table  class="table table-striped">
+							<tr>
+								<th>No</th>
+								<th>Customer</th>
+								<th>Date</th>
+								<th>Total Price</th>
+								<th>Status</th>
+								
+							</tr>
+							<th:block th:each="order: ${orderlist}">
+								<tr>
+									<td th:text ="${order.id}"></td>
+									<td th:text ="${order.customer.name}"></td>
+									<td th:text ="${order.orderdate}"></td>
+									<td th:text ="${order.totalprice}"></td>
+									<td th:text ="${order.status}"></td>
+									<td><a th:href="@{'/details/'+${order.id}}">Details</a></td>
+						
+				
+								</tr>
+							</th:block>
+						</table>
+				</div>
+			</div>
+		</div>
+		
+	</body>
+</html>
