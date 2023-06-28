@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<style>
+.register-photo {
+    background: #f1f7fc;
+    padding: 80px 0
+}
+
+.register-photo .image-holder {
+    display: table-cell;
+    width: 50%;
+    background: url(https://static.vecteezy.com/system/resources/previews/002/173/284/large_2x/online-book-store-free-vector.jpg);
+    background-size: cover
+}
+
+.register-photo .form-container {
+    display: table;
+    max-width: 900px;
+    width: 90%;
+    margin: 0 auto;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1)
+}
+
+.register-photo form {
+    display: table-cell;
+    width: 400px;
+    background-color: #ffffff;
+    padding: 40px 60px;
+    color: #505e6c
+}
+
+@media (max-width:991px) {
+    .register-photo form {
+        padding: 40px
+    }
+}
+
+.register-photo form h2 {
+    font-size: 24px;
+    line-height: 1.5;
+    margin-bottom: 30px
+
+}
+
+.register-photo form .form-control {
+    background: transparent;
+    border: none;
+    color:  #61acb3;
+    border-bottom: 1px solid #dfe7f1;
+    border-radius: 0;
+    box-shadow: none;
+    outline: none;
+    color: inherit;
+    text-indent: 0px;
+    height: 40px
+}
+
+.register-photo form .form-check {
+    font-size: 13px;
+    line-height: 20px
+ 
+}
+
+.register-photo form .btn-primary {
+    background: #61acb3 ;
+    border: none;
+    border-radius: 25px;
+    padding: 11px;
+    box-shadow: none;
+    margin-top: 35px;
+    text-shadow: none;
+    outline: none !important
+}
+
+.register-photo form .btn-primary:hover,
+.register-photo form .btn-primary:active {
+    background:#61acb3
+}
+
+.register-photo form .btn-primary:active {
+    transform: translateY(1px)
+}
+
+.register-photo form .already {
+    display: block;
+    text-align: center;
+    font-size: 12px;
+    color: #6f7a85;
+    opacity: 0.9;
+    text-decoration: none
+}
+</style>
+	<div th:replace="fragments::html_head">
+	</div>
+	
+	
+	
+	
+	<body>
+	
+	<!-- Nav Bar -->
+	<div th:replace="fragments::menu">
+	</div>
+	
+	<!-- Nav Bar End -->
+		
+		
+		<div class="register-photo" >
+    <div class="form-container">
+        <div class="image-holder"></div>
+        <form th:action="@{/login1}" th:object="${cuslogin}" method="get">
+            <h2 class="text-center"><strong>This is Login Page</strong></h2>
+            <div class="form-group"> <input type="email" th:field="*{email}"  class="form-control" placeholder="Email" ></div>
+            <div class="form-group"><input  type="password" th:field="*{password}" class="form-control" placeholder="Password" ></div>
+            <div class="form-group">
+                <div class="d-flex justify-content-between">
+        <div class="form-check"> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"> <label class="form-check-label" for="flexCheckDefault"> Remember me </label> </div>
+        <div> <a th:href="@{/register}" class="text-info">Register</a> </div>
+    </div>
+            </div>
+            <div class="form-group"><button class="btn btn-success btn-block btn-info" type="Submit">Login</button></div><a class="already" href="#">Terms of Use and Privacy Policy</a>
+        </form>
+    </div>
+</div>
+		
+	</body>
+<footer th:replace="fragments::footer"></footer>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Library User</title>
+
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+	</head>
+	<h1 align="center">Library System</h1>
+	<body>
+	<!-- Nav Bar -->
+	
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" th:href="@{/viewall}">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+<form th:action="@{/searchbook}">
+<div class="input-group">
+
+  <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" th:name="search">
+  <button type="submit" value="Search" class="btn btn-outline-primary">search</button>
+
+</div>
+  </form>
+  
+  
+</nav>
+	
+	<!-- Nav Bar End -->
+		
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-9" style="margin:0 auto;">
+					<h1 align="center">Orders</h1>
+					
+						
+						<table  class="table table-striped">
+							<tr>
+								<th>No.</th>
+								<th>Customer</th>
+								<th>OrderDate</th>
+								<th>Total Price</th>
+						
+							
+					
+							</tr>
+							<th:block th:each="cart: ${mycartlist}">
+								<tr>
+									<td th:text ="${cart.title}"></td>
+									<td th:text ="${cart.isbn}"></td>
+									<td><img th:src="@{${'/uploads/'+cart.img}}" width="50px" height="50px"></td>
+									<td th:text ="${cart.author.name}"></td>
+									<td th:text ="${cart.category.name}"></td>
+									<td th:text ="${cart.quantity}"></td>
+									<td th:text ="${cart.price}"></td>
+									<td th:text ="${cart.price}*${cart.quantity}"></td>
+																		
+								</tr>
+								
+								
+								
+							</th:block>
+						
+							
+						</table>
+						
+						<button>Order Now</button>
+					
+						
+				</div>
+			</div>
+		</div>
+	</body>
+<footer th:replace="fragments::footer"></footer>
+</html>

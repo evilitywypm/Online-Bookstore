@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" class="bg">
+	<div th:replace="fragments::html_head">
+	</div>
+	
+		<meta charset="ISO-8859-1">
+		
+<style type="text/css">	
+
+.bg{
+
+}
+
+	
+.box img{
+	width: 250px;
+	height: 250px;
+}
+.box ul{
+	float: left;
+ 	list-style-type: none;
+ 	margin: 20px;
+ 	padding: 10px 20px;
+ 	width: 28%;
+ 	box-shadow: 5px 4px 15px #c0c0c0;
+ 	
+}
+.box li{
+	opacity: 1;
+	margin: 1px;
+	border: 0px solid;
+	padding: 5px 5px 5px 10px;
+	border-radius: 2px;
+	background-color: #c0c0c0;
+} 
+
+
+</style>
+	
+	
+	<body>
+	
+	<!-- Nav Bar -->
+	<div th:replace="fragments::menu1">
+	</div>
+	
+	<!-- Nav Bar End -->
+		
+			<div class="hero">
+				<div class="container">
+					<div class="row justify-content-between">
+						<div class="col-lg-5">
+							<div class="intro-excerpt">
+								<h1>Success</h1>
+							</div>
+						</div>
+						<div class="col-lg-7">
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		
+	</body>
+<footer th:replace="fragments::footer"></footer>
+</html>

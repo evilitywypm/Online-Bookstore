@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="Untree.co">
+  <link rel="shortcut icon" href="favicon.png">
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="bootstrap, bootstrap4" />
+
+		<!-- Bootstrap CSS -->
+		<link href="../css/bootstrap.min.css" rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+		<link href="../css/tiny-slider.css" rel="stylesheet">
+		<link href="../css/style.css" rel="stylesheet">
+		<title>Online Book Store By WYPM </title>
+		
+		<style type="text/css">
+		/* Single Product */
+
+#prodetails {
+    display: flex;
+    margin-top: 20px;
+}
+
+#prodetails .single-pro-image {
+    width: 40%;
+    margin-right: 50px;
+}
+
+.small-img-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.small-img-col {
+    flex-basis: 24%;
+    cursor: pointer;
+}
+
+#prodetails .single-pro-details {
+    width: 50%;
+    padding-top: 30px;
+}
+
+#prodetails .single-pro-details h4 {
+    padding: 40px 0 20px 0;
+}
+
+#prodetails .single-pro-details h2 {
+    font-size: 26px;
+}
+
+#prodetails .single-pro-details select {
+    display: block;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+}
+
+#prodetails .single-pro-details input {
+    width: 50px;
+    height: 47px;
+    padding-left: 10px;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+#prodetails .single-pro-details input:focus {
+    outline: none;
+}
+
+#prodetails .single-pro-details button {
+    background-color: #088178;
+    color: #fff;
+}
+
+#prodetails .single-pro-details span {
+    line-height: 25px;
+}
+		</style>
+	</head>
+		<meta charset="ISO-8859-1">
+		
+
+	
+	
+	<body>
+	
+	<!-- Nav Bar -->
+	<div th:replace="fragments::menu">
+	</div>
+	
+	<!-- Nav Bar End -->
+		
+		
+		<section id="prodetails" class="section-p1" >
+
+        <div class="single-pro-image" th:each="book : ${books}">
+            <img th:src="@{'/uploads/'+${book.img}}" width="100%" height="75%" id="MainImg" alt="">
+        </div>
+
+        <div class="single-pro-details" th:each="book : ${books}">
+            
+            <h4 th:text="${book.title}"></h4>
+            <div class="row mb-5">
+                        <div class="col-md-2">
+                          <span class="text-black">ISBN:</span>
+                        </div>
+                       
+                        <div class="col-md-3">
+                       
+                          <strong th:text="${book.isbn}" class="text-black"></strong>
+                        </div>
+                      </div>
+           
+          <div class="row mb-5">
+                        <div class="col-md-2">
+                          <span class="text-black">Author:</span>
+                        </div>
+                       
+                        <div class="col-md-3">
+                       
+                          <strong th:text="${book.author.name}" class="text-black"></strong>
+                        </div>
+                      </div>
+          <div class="row mb-5">
+                        <div class="col-md-2">
+                          <span class="text-black">Category:</span>
+                        </div>
+                       
+                        <div class="col-md-3">
+                       
+                          <strong th:text="${book.category.name}" class="text-black"></strong>
+                        </div>
+                      </div>
+		 <div class="row mb-5">
+                        <div class="col-md-2">
+                          <span class="text-black">Price:</span>
+                        </div>
+                       
+                        <div class="col-md-3">
+                       
+                          <strong th:text="${book.price}" class="text-black"></strong>
+                        </div>
+                      </div>
+                      
+            <div>
+                        <div>
+                          <span class="text-black">Description</span>
+                        </div>
+                       
+                        <div>
+                       
+                          <strong th:text="${book.description}" class="text-black"></strong>
+                        </div>
+                      </div>
+                      <br>
+             <a class="btn btn-outline-black btn-sm btn-block" th:href="@{'/addtocart/'+${book.id}}">Add To Cart</a>
+           
+            
+           
+        </div>
+
+    </section>
+		
+		
+	</body>
+	<footer class="footer-section">
+			<div class="container relative">
+
+				
+				
+
+				<div class="row g-5 mb-5">
+					<div class="col-lg-4">
+						<div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">Book Store<span>.</span></a></div>
+						<p class="mb-4">Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant</p>
+
+						<ul class="list-unstyled custom-social">
+							<li><a href="https://www.facebook.com/"><span class="fa fa-brands fa-facebook-f"></span></a></li>
+							<li><a href="https://www.twitter.com/"><span class="fa fa-brands fa-twitter"></span></a></li>
+							<li><a href="https://www.instagram.com/"><span class="fa fa-brands fa-instagram"></span></a></li>
+							<li><a href="https://www.linkedin.com/"><span class="fa fa-brands fa-linkedin"></span></a></li>
+						</ul>
+					</div>
+
+					<div class="col-lg-8">
+						<div class="row links-wrap">
+							<div class="col-6 col-sm-6 col-md-3">
+								
+							</div>
+
+							<div class="col-6 col-sm-6 col-md-3">
+								
+							</div>
+
+							<div class="col-6 col-sm-6 col-md-3">
+								<ul class="list-unstyled">
+									<li><a href="#">Jobs</a></li>
+									<li><a href="#">Our team</a></li>
+									<li><a href="#">Leadership</a></li>
+									<li><a href="#">Privacy Policy</a></li>
+								</ul>
+							</div>
+
+							<div class="col-6 col-sm-6 col-md-3">
+								<ul class="list-unstyled">
+									<li><a href="#">Nordic Chair</a></li>
+									<li><a href="#">Kruzo Aero</a></li>
+									<li><a href="#">Ergonomic Chair</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="border-top copyright">
+					<div class="row pt-4">
+						<div class="col-lg-6">
+							<p class="mb-2 text-center text-lg-start">Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://untree.co">Untree.co</a> <!-- License information: https://untree.co/license/ -->
+            </p>
+						</div>
+
+						<div class="col-lg-6 text-center text-lg-end">
+							<ul class="list-unstyled d-inline-flex ms-auto">
+								<li class="me-4"><a href="#">Terms &amp; Conditions</a></li>
+								<li><a href="#">Privacy Policy</a></li>
+							</ul>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+		</footer>
+</html>

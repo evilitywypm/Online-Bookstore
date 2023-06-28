@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<div th:replace="fragments::html_head">
+	</div>
+		<meta charset="ISO-8859-1">
+	<body>
+	
+	<!-- Nav Bar -->
+	<div th:replace="fragments::menu1">
+	</div>
+	
+	<!-- Nav Bar End -->
+		
+		 <!-- Start Hero Section -->
+			<div class="hero">
+				<div class="container">
+					<div class="row justify-content-between">
+						<div class="col-lg-5">
+							<div class="intro-excerpt">
+								<h1>Nice And Easy <span clsas="d-block">Book Store</span></h1>
+								<p class="mb-4">Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.</p>
+								<p><a th:href="@{viewall1}" class="btn btn-white-outline">Explore</a></p>
+							</div>
+						</div>
+						<div class="col-lg-7">
+							<div class="hero-img-wrap">
+								<img src="images/222.png" class="img-fluid">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		<!-- End Hero Section -->
+		
+	</body>
+
+</html>
+<footer th:replace="fragments::footer"></footer>
